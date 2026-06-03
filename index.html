@@ -1,0 +1,1468 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>How We Hire at Blinq</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;800;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --cream:       #ede8df;
+      --cream-dark:  #e3dbd0;
+      --cream-light: #f5f1eb;
+      --yellow:      #f5dfa0;
+      --sand:        #d9d2c8;
+      --white:       #ffffff;
+      --text:        #231c15;
+      --text-muted:  #6b6055;
+      --accent:      #ff6552;
+      --accent-dark: #e54f3d;
+      --border:      #d5cec5;
+      --card-bg:     #ffffff;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      background: var(--cream);
+      color: var(--text);
+      min-height: 100vh;
+      line-height: 1.6;
+    }
+
+    /* ── HEADER ── */
+    header {
+      background: var(--cream-light);
+      border-bottom: 1px solid var(--border);
+      padding: 0 48px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 64px;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      text-decoration: none;
+    }
+
+    .logo-icon {
+      font-size: 20px;
+      font-weight: 900;
+      color: var(--text);
+      letter-spacing: -1px;
+      font-family: 'Playfair Display', serif;
+    }
+
+    .logo-text {
+      font-weight: 800;
+      font-size: 18px;
+      color: var(--text);
+      font-family: 'Inter', sans-serif;
+      letter-spacing: -0.3px;
+    }
+
+    .header-badge {
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--text-muted);
+      background: var(--cream-dark);
+      border: 1px solid var(--border);
+      padding: 5px 14px;
+      border-radius: 100px;
+    }
+
+    /* ── HERO ── */
+    .hero {
+      padding: 88px 48px 72px;
+      max-width: 860px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .hero-eyebrow {
+      display: inline-block;
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--accent);
+      text-transform: uppercase;
+      letter-spacing: 1.4px;
+      margin-bottom: 20px;
+    }
+
+    .hero h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(40px, 5.5vw, 64px);
+      font-weight: 900;
+      line-height: 1.08;
+      letter-spacing: -1px;
+      color: var(--text);
+      margin-bottom: 20px;
+    }
+
+    .hero p {
+      font-size: 18px;
+      color: var(--text-muted);
+      max-width: 560px;
+      margin: 0 auto 52px;
+      line-height: 1.7;
+      font-weight: 400;
+    }
+
+    /* ── STATS BAR ── */
+    .stats-bar {
+      background: var(--text);
+      padding: 28px 48px;
+      display: flex;
+      justify-content: center;
+      gap: 64px;
+      flex-wrap: wrap;
+    }
+
+    .stat { text-align: center; }
+
+    .stat-value {
+      font-family: 'Playfair Display', serif;
+      font-size: 28px;
+      font-weight: 900;
+      color: var(--cream-light);
+      display: block;
+      letter-spacing: -0.5px;
+    }
+
+    .stat-label {
+      font-size: 12px;
+      font-weight: 500;
+      color: #a09488;
+      margin-top: 3px;
+    }
+
+    /* ── TABS ── */
+    .tabs-wrapper {
+      position: sticky;
+      top: 64px;
+      z-index: 90;
+      background: var(--cream-light);
+      border-bottom: 1px solid var(--border);
+      padding: 0 48px;
+    }
+
+    .tabs {
+      display: flex;
+      gap: 0;
+      max-width: 860px;
+      margin: 0 auto;
+      overflow-x: auto;
+      scrollbar-width: none;
+    }
+
+    .tabs::-webkit-scrollbar { display: none; }
+
+    .tab {
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      padding: 18px 22px;
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--text-muted);
+      cursor: pointer;
+      border-bottom: 2px solid transparent;
+      white-space: nowrap;
+      transition: color 0.15s, border-color 0.15s;
+      background: none;
+      border-top: none;
+      border-left: none;
+      border-right: none;
+      font-family: 'Inter', sans-serif;
+    }
+
+    .tab:hover { color: var(--text); }
+
+    .tab.active {
+      color: var(--text);
+      border-bottom-color: var(--accent);
+    }
+
+    /* ── CONTENT ── */
+    .tab-content {
+      display: none;
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 52px 48px 88px;
+    }
+
+    .tab-content.active { display: block; }
+
+    /* ── SECTION HEADER ── */
+    .section-header { margin-bottom: 40px; }
+
+    .section-label {
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1.6px;
+      color: var(--accent);
+      margin-bottom: 10px;
+    }
+
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 36px;
+      font-weight: 800;
+      letter-spacing: -0.5px;
+      color: var(--text);
+      margin-bottom: 14px;
+      line-height: 1.15;
+    }
+
+    .section-desc {
+      font-size: 16px;
+      color: var(--text-muted);
+      max-width: 600px;
+      line-height: 1.75;
+    }
+
+    /* ── DIVIDER ── */
+    hr.divider {
+      border: none;
+      border-top: 1px solid var(--border);
+      margin: 44px 0;
+    }
+
+    /* ── VALUES GRID ── */
+    .values-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(185px, 1fr));
+      gap: 14px;
+      margin: 32px 0;
+    }
+
+    .value-card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 26px 22px;
+      transition: box-shadow 0.2s, transform 0.2s;
+    }
+
+    .value-card:hover {
+      box-shadow: 0 4px 20px rgba(35,28,21,0.08);
+      transform: translateY(-2px);
+    }
+
+    .value-icon {
+      font-size: 22px;
+      margin-bottom: 12px;
+      display: block;
+    }
+
+    .value-title {
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 6px;
+      line-height: 1.3;
+    }
+
+    .value-desc {
+      font-size: 13px;
+      color: var(--text-muted);
+      line-height: 1.55;
+    }
+
+    /* ── MEET CARD ── */
+    .meet-card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 32px;
+      display: flex;
+      gap: 24px;
+      align-items: flex-start;
+      margin-bottom: 44px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .meet-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 3px;
+      background: var(--accent);
+      border-radius: 16px 16px 0 0;
+    }
+
+    .avatar {
+      width: 68px;
+      height: 68px;
+      border-radius: 50%;
+      background: var(--accent);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Playfair Display', serif;
+      font-size: 26px;
+      font-weight: 900;
+      flex-shrink: 0;
+      color: white;
+    }
+
+    .meet-name {
+      font-family: 'Playfair Display', serif;
+      font-size: 20px;
+      font-weight: 800;
+      color: var(--text);
+      margin-bottom: 2px;
+    }
+
+    .meet-role {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--accent);
+      margin-bottom: 14px;
+    }
+
+    .meet-message {
+      font-size: 15px;
+      color: var(--text-muted);
+      line-height: 1.75;
+      font-style: italic;
+    }
+
+    /* ── PROCESS TIMELINE ── */
+    .process-title {
+      font-size: 17px;
+      font-weight: 700;
+      margin-bottom: 22px;
+      color: var(--text);
+    }
+
+    .stages {
+      display: flex;
+      flex-direction: column;
+      margin-bottom: 44px;
+    }
+
+    .stage {
+      display: flex;
+      gap: 20px;
+    }
+
+    .stage-left {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 38px;
+      flex-shrink: 0;
+    }
+
+    .stage-dot {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: var(--cream);
+      border: 2px solid var(--accent);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--accent);
+      flex-shrink: 0;
+    }
+
+    .stage-line {
+      width: 2px;
+      flex: 1;
+      background: var(--border);
+      margin: 4px 0;
+      min-height: 24px;
+    }
+
+    .stage:last-child .stage-line { display: none; }
+
+    .stage-body {
+      padding-bottom: 28px;
+      flex: 1;
+    }
+
+    .stage-label {
+      font-size: 10px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1.2px;
+      color: var(--text-muted);
+      margin-bottom: 3px;
+      margin-top: 6px;
+    }
+
+    .stage-name {
+      font-family: 'Playfair Display', serif;
+      font-size: 17px;
+      font-weight: 800;
+      color: var(--text);
+      margin-bottom: 6px;
+    }
+
+    .stage-desc {
+      font-size: 14px;
+      color: var(--text-muted);
+      line-height: 1.65;
+    }
+
+    .stage-duration {
+      display: inline-block;
+      margin-top: 10px;
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--accent);
+      background: #fff3f1;
+      border: 1px solid #ffc8bf;
+      padding: 3px 12px;
+      border-radius: 100px;
+    }
+
+    /* ── TWO-COL ── */
+    .two-col {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      margin: 28px 0;
+    }
+
+    @media (max-width: 620px) {
+      .two-col { grid-template-columns: 1fr; }
+    }
+
+    /* ── LIST CARD ── */
+    .list-card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 24px;
+    }
+
+    .list-card-title {
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 16px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid var(--cream-dark);
+      text-transform: uppercase;
+      letter-spacing: 0.6px;
+    }
+
+    .check-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .check-list li {
+      display: flex;
+      gap: 10px;
+      align-items: flex-start;
+      font-size: 14px;
+      color: var(--text-muted);
+      line-height: 1.5;
+    }
+
+    .check-list li::before {
+      content: '';
+      width: 18px;
+      height: 18px;
+      border-radius: 50%;
+      background: var(--accent);
+      flex-shrink: 0;
+      margin-top: 1px;
+      background-image: url("data:image/svg+xml,%3Csvg width='10' height='8' viewBox='0 0 10 8' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 3.5L3.5 6L9 1' stroke='white' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: center;
+    }
+
+    /* ── QUESTION CARDS ── */
+    .questions-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin: 20px 0;
+    }
+
+    .question-card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-left: 3px solid var(--accent);
+      border-radius: 0 12px 12px 0;
+      padding: 16px 20px;
+      font-size: 14px;
+      color: var(--text-muted);
+      line-height: 1.6;
+      transition: background 0.15s;
+    }
+
+    .question-card:hover {
+      background: #fff9f8;
+      color: var(--text);
+    }
+
+    /* ── PREPARE CARDS ── */
+    .prepare-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 14px;
+      margin: 20px 0;
+    }
+
+    .prepare-card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 24px;
+      transition: box-shadow 0.2s;
+    }
+
+    .prepare-card:hover {
+      box-shadow: 0 4px 16px rgba(35,28,21,0.07);
+    }
+
+    .prepare-number {
+      width: 34px;
+      height: 34px;
+      background: var(--accent);
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 15px;
+      font-weight: 800;
+      color: white;
+      margin-bottom: 14px;
+      font-family: 'Playfair Display', serif;
+    }
+
+    .prepare-title {
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 8px;
+    }
+
+    .prepare-desc {
+      font-size: 13px;
+      color: var(--text-muted);
+      line-height: 1.55;
+    }
+
+    /* ── CTA BLOCK ── */
+    .cta-block {
+      background: var(--text);
+      border-radius: 18px;
+      padding: 44px 40px;
+      text-align: center;
+      margin-top: 52px;
+    }
+
+    .cta-block h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 26px;
+      font-weight: 800;
+      color: var(--cream-light);
+      margin-bottom: 10px;
+      letter-spacing: -0.3px;
+    }
+
+    .cta-block p {
+      font-size: 15px;
+      color: #a09488;
+      margin-bottom: 28px;
+    }
+
+    .cta-email {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--accent);
+      color: white;
+      font-weight: 700;
+      font-size: 14px;
+      padding: 13px 30px;
+      border-radius: 100px;
+      text-decoration: none;
+      transition: background 0.15s, transform 0.15s;
+    }
+
+    .cta-email:hover {
+      background: var(--accent-dark);
+      transform: translateY(-1px);
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--text);
+      padding: 28px 48px;
+      text-align: center;
+      font-size: 13px;
+      color: #6b6055;
+    }
+
+    footer a { color: var(--accent); text-decoration: none; }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 640px) {
+      header { padding: 0 20px; }
+      .hero { padding: 52px 20px 40px; }
+      .stats-bar { gap: 28px; padding: 24px 20px; }
+      .tabs-wrapper { padding: 0 20px; }
+      .tab-content { padding: 36px 20px 60px; }
+      .meet-card { flex-direction: column; gap: 14px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header>
+  <a href="#" class="logo">
+    <span class="logo-text">BLINQ</span>
+  </a>
+  <span class="header-badge">Hiring Guide</span>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-eyebrow">Candidate guide</div>
+  <h1>How we hire at Blinq</h1>
+  <p>We're building something people genuinely want to be part of. This guide gives you an honest look at how we hire, what we're looking for, and how to put your best foot forward.</p>
+</section>
+
+
+<!-- TABS -->
+<div class="tabs-wrapper">
+  <div class="tabs">
+    <button class="tab active" onclick="switchTab('overview', this)">&#9733; Overview</button>
+    <button class="tab" onclick="switchTab('engineering', this)">&#9881; Engineering</button>
+    <button class="tab" onclick="switchTab('sales', this)">&#128200; Sales</button>
+    <button class="tab" onclick="switchTab('product', this)">&#9726; Product Management</button>
+    <button class="tab" onclick="switchTab('design', this)">&#9998; Product Design</button>
+    <button class="tab" onclick="switchTab('marketing', this)">&#9741; Marketing &amp; Brand</button>
+    <button class="tab" onclick="switchTab('bizops', this)">&#9783; Business Operations</button>
+    <button class="tab" onclick="switchTab('talent', this)">&#9786; People &amp; Talent</button>
+  </div>
+</div>
+
+<!-- ===== OVERVIEW TAB ===== -->
+<div id="tab-overview" class="tab-content active">
+
+  <div class="section-header">
+    <div class="section-label">About Blinq</div>
+    <h2 class="section-title">Blinq is the AI contacts app for people who meet people</h2>
+    <p class="section-desc">We're on a mission to unlock the world's relationship potential. So much of what's possible in the world is locked inside relationships that never quite happen. A missed conversation, a forgotten follow-up, the right person at the wrong time. We're building so those chances aren't left to chance.</p>
+    <p class="section-desc" style="margin-top:16px;">What started as the world's #1 digital business card is now used by 4 million professionals and at 93% of the Fortune 500. We've raised $45m+ from Blackbird, Square Peg, HubSpot Ventures, and Touring Capital.</p>
+    <p class="section-desc" style="margin-top:12px;"><a href="https://blinq.me/" target="_blank" style="color:var(--accent);font-weight:600;text-decoration:none;">Learn more at blinq.me</a></p>
+  </div>
+
+  <div class="values-grid">
+    <div class="value-card">
+      <span class="value-icon">&#127775;</span>
+      <div class="value-title">Mission obsessed</div>
+      <div class="value-desc">The mission isn't a poster on the wall. It's what drives every decision we make.</div>
+    </div>
+    <div class="value-card">
+      <span class="value-icon">&#9889;</span>
+      <div class="value-title">High-leverage mindset</div>
+      <div class="value-desc">We optimize for impact, move with speed, and leave our egos at the door.</div>
+    </div>
+    <div class="value-card">
+      <span class="value-icon">&#127942;</span>
+      <div class="value-title">A players only</div>
+      <div class="value-desc">We hire the best, hold each other accountable, and never settle.</div>
+    </div>
+    <div class="value-card">
+      <span class="value-icon">&#9878;</span>
+      <div class="value-title">Work fuels life, life fuels work</div>
+      <div class="value-desc">Peak performance matters. So does sustaining it. We take both seriously.</div>
+    </div>
+  </div>
+
+  <hr class="divider" />
+
+  <div class="section-header">
+    <div class="section-label">Our hiring philosophy</div>
+    <h2 class="section-title">What to expect from us</h2>
+    <p class="section-desc">We take hiring seriously because the people we bring in shape everything. Every step of this process is designed to be honest, efficient, and genuinely worth your time.</p>
+  </div>
+
+  <div class="two-col">
+    <div class="list-card">
+      <div class="list-card-title">What we look for in everyone</div>
+      <ul class="check-list">
+        <li>High ownership mentality and a bias to action</li>
+        <li>Clear communicator, written and verbal</li>
+        <li>Comfortable with ambiguity and comfortable moving fast</li>
+        <li>Hungry to learn and genuinely open to feedback</li>
+        <li>Collaborative without being territorial</li>
+        <li>Data-informed in how you make decisions</li>
+      </ul>
+    </div>
+    <div class="list-card">
+      <div class="list-card-title">What you can expect from us</div>
+      <ul class="check-list">
+        <li>Clear communication at every stage, no radio silence</li>
+        <li>Prompt feedback after each interview</li>
+        <li>A process that respects your time and doesn't drag</li>
+        <li>A genuine look at the team and how we work</li>
+        <li>Space to ask questions at every step</li>
+        <li>A decision based on merit, full stop</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="cta-block">
+    <h3>Questions before you start</h3>
+    <p>We're happy to help you prepare or talk through anything about the process.</p>
+    <a href="mailto:ty.charoensuk@blinq.me" class="cta-email">&#9993;&nbsp; Reach out to the recruiter you've been working with</a>
+  </div>
+
+</div>
+
+<!-- ===== ENGINEERING TAB ===== -->
+<div id="tab-engineering" class="tab-content">
+
+  <div class="section-header">
+    <div class="section-label">Engineering</div>
+    <h2 class="section-title">The Engineering interview process</h2>
+    <p class="section-desc">Technical rigor matters here. So does how you think out loud, communicate trade-offs, and show up as a teammate. This process gives you space to do all three.</p>
+  </div>
+
+
+  <div class="process-title">What to expect, stage by stage</div>
+
+  <div class="stages">
+    <div class="stage">
+      <div class="stage-left">
+        <div class="stage-dot">1</div>
+        <div class="stage-line"></div>
+      </div>
+      <div class="stage-body">
+        <div class="stage-label">Stage 1</div>
+        <div class="stage-name">Recruiter chat</div>
+        <div class="stage-desc">Get to know Blinq and the opportunity ahead. We'll learn more about your background, motivations, and what you're looking for next, while giving you a clear picture of our team, culture, and mission.</div>
+      </div>
+    </div>
+    <div class="stage">
+      <div class="stage-left">
+        <div class="stage-dot">2</div>
+        <div class="stage-line"></div>
+      </div>
+      <div class="stage-body">
+        <div class="stage-label">Stage 2</div>
+        <div class="stage-name">Hiring manager interview</div>
+        <div class="stage-desc">A deeper conversation with your future manager to explore your experience, strengths, and approach to work. We'll dive into your accomplishments, how you think, and the impact you've created throughout your career.</div>
+      </div>
+    </div>
+    <div class="stage">
+      <div class="stage-left">
+        <div class="stage-dot">3</div>
+        <div class="stage-line"></div>
+      </div>
+      <div class="stage-body">
+        <div class="stage-label">Stage 3</div>
+        <div class="stage-name">Onsite interviews</div>
+        <div class="stage-desc">Your onsite is up to three sessions. We progress you through each one based on how the previous went.</div>
+        <div style="margin-top:14px;display:flex;flex-direction:column;gap:12px;">
+          <div style="background:var(--cream);border:1px solid var(--border);border-radius:10px;padding:16px 18px;">
+            <div style="font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:var(--accent);margin-bottom:4px;">3a — Technical interview</div>
+            <div style="font-size:14px;color:var(--text-muted);line-height:1.6;">A panel interview covering engineering craft and a coding challenge. We want to see how you think through problems, structure your code, and communicate your approach. If this goes well, we move you forward. If not, we'll wrap up here.</div>
+          </div>
+          <div style="background:var(--cream);border:1px solid var(--border);border-radius:10px;padding:16px 18px;">
+            <div style="font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:var(--accent);margin-bottom:4px;">3b — Lunch with the team</div>
+            <div style="font-size:14px;color:var(--text-muted);line-height:1.6;">An informal chance to meet the broader engineering team over lunch. Lunch is on us. Come as you are and get a genuine feel for the culture and the people you'd be working alongside.</div>
+          </div>
+          <div style="background:var(--cream);border:1px solid var(--border);border-radius:10px;padding:16px 18px;">
+            <div style="font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:var(--accent);margin-bottom:4px;">3c — Systems design</div>
+            <div style="font-size:14px;color:var(--text-muted);line-height:1.6;">You'll be given a problem statement with requirements and asked to design a high-level solution. We're evaluating your technical thinking, clarity, and communication. This isn't about writing production-ready code.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <hr class="divider" />
+
+  <div class="section-label" style="margin-bottom:8px;">How to prepare</div>
+  <h3 style="font-family:'Playfair Display',serif;font-size:22px;font-weight:800;margin-bottom:6px;color:var(--text);">Interview focus areas</h3>
+
+  <!-- Stage 2 prep -->
+  <p style="font-size:14px;color:var(--text-muted);margin-bottom:20px;margin-top:4px;">Stage 2 — Hiring manager interview</p>
+  <p style="font-size:14px;color:var(--text-muted);margin-bottom:16px;line-height:1.6;">We assess you across five IC competencies. Here's what we're looking for in the hiring manager conversation:</p>
+
+  <div style="background:var(--white);border:1px solid var(--border);border-radius:14px;overflow:hidden;margin-bottom:36px;">
+    <table style="width:100%;border-collapse:collapse;font-size:14px;">
+      <thead>
+        <tr style="background:var(--text);">
+          <th style="padding:14px 18px;text-align:left;color:var(--cream-light);font-weight:700;font-size:12px;text-transform:uppercase;letter-spacing:0.8px;width:30%;">Competency</th>
+          <th style="padding:14px 18px;text-align:left;color:var(--cream-light);font-weight:700;font-size:12px;text-transform:uppercase;letter-spacing:0.8px;">What it looks like</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr style="border-top:1px solid var(--border);">
+          <td style="padding:14px 18px;font-weight:700;color:var(--text);vertical-align:top;">Technical Excellence</td>
+          <td style="padding:14px 18px;color:var(--text-muted);line-height:1.6;">Language and platform fluency, code quality instincts, debugging methodology, testing practices, framework depth</td>
+        </tr>
+        <tr style="border-top:1px solid var(--border);background:var(--cream-light);">
+          <td style="padding:14px 18px;font-weight:700;color:var(--text);vertical-align:top;">Architecture &amp; Systems</td>
+          <td style="padding:14px 18px;color:var(--text-muted);line-height:1.6;">Design patterns, modularisation strategy, scalability thinking, data modelling, system decomposition</td>
+        </tr>
+        <tr style="border-top:1px solid var(--border);">
+          <td style="padding:14px 18px;font-weight:700;color:var(--text);vertical-align:top;">Better on the Inside</td>
+          <td style="padding:14px 18px;color:var(--text-muted);line-height:1.6;">CI/CD, build tooling, DX improvements, testing infrastructure, process automation, observability</td>
+        </tr>
+        <tr style="border-top:1px solid var(--border);background:var(--cream-light);">
+          <td style="padding:14px 18px;font-weight:700;color:var(--text);vertical-align:top;">Teamwork</td>
+          <td style="padding:14px 18px;color:var(--text-muted);line-height:1.6;">Cross-team collaboration, code review culture, documentation habits, consensus-building on design decisions</td>
+        </tr>
+        <tr style="border-top:1px solid var(--border);">
+          <td style="padding:14px 18px;font-weight:700;color:var(--text);vertical-align:top;">Leadership</td>
+          <td style="padding:14px 18px;color:var(--text-muted);line-height:1.6;">Mentoring senior ICs, org-level influence, hiring bar ownership, platform strategy, long-term technical vision</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Stage 3 prep -->
+  <p style="font-size:14px;color:var(--text-muted);margin-bottom:20px;">Stage 3 — Onsite interviews</p>
+
+  <div style="display:flex;flex-direction:column;gap:16px;margin-bottom:44px;">
+
+    <div style="background:var(--white);border:1px solid var(--border);border-radius:14px;padding:24px;">
+      <div style="font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:var(--accent);margin-bottom:12px;">3a — Technical interview</div>
+      <ul class="check-list">
+        <li>Write clean code with clear naming conventions and logical structure</li>
+        <li>Walk through your thought process out loud. Interviewers want to see how you think, not just what you produce</li>
+        <li>Be ready to talk through how you approach edge cases and error handling</li>
+        <li>We use AI at Blinq, so feel free to show how you use AI tools in your coding workflow</li>
+      </ul>
+    </div>
+
+    <div style="background:var(--white);border:1px solid var(--border);border-radius:14px;padding:24px;">
+      <div style="font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:var(--accent);margin-bottom:12px;">3c — Systems Design</div>
+      <p style="font-size:14px;color:var(--text-muted);line-height:1.7;margin-bottom:16px;">We recommend using a whiteboarding tool to structure your thinking. Pick whichever you're most comfortable with:</p>
+      <div style="display:flex;flex-wrap:wrap;gap:8px;margin-bottom:20px;">
+        <a href="https://excalidraw.com/" target="_blank" style="font-size:13px;font-weight:600;color:var(--accent);background:#fff3f1;border:1px solid #ffc8bf;padding:5px 14px;border-radius:100px;text-decoration:none;">Excalidraw</a>
+        <a href="https://app.diagrams.net/" target="_blank" style="font-size:13px;font-weight:600;color:var(--accent);background:#fff3f1;border:1px solid #ffc8bf;padding:5px 14px;border-radius:100px;text-decoration:none;">diagrams.net</a>
+        <a href="https://miro.com/" target="_blank" style="font-size:13px;font-weight:600;color:var(--accent);background:#fff3f1;border:1px solid #ffc8bf;padding:5px 14px;border-radius:100px;text-decoration:none;">Miro</a>
+      </div>
+      <ul class="check-list">
+        <li>Start by sketching a rough wireframe of how data will be displayed in the UI. Let that inform your systems design</li>
+        <li>Put down your first thought and iterate. We care more about your thought process and the trade-offs you're making than a perfect design</li>
+        <li>Embrace higher levels of abstraction early. It's fine to say "we need a database here" before deciding what type. Deep dives can come later</li>
+        <li>Don't let early decisions unnecessarily close off options later in the design</li>
+        <li>Make assumptions freely, just state them as you go</li>
+      </ul>
+    </div>
+
+  </div>
+
+
+</div>
+
+<!-- ===== SALES TAB ===== -->
+<div id="tab-sales" class="tab-content">
+
+  <div class="section-header">
+    <div class="section-label">Sales</div>
+    <h2 class="section-title">The Sales interview process</h2>
+    <p class="section-desc">We're building a cross-border, multi-city sales team. If you love to sell and want a real say in where this thing goes next, you're going to fit right in.</p>
+  </div>
+
+
+  <div class="process-title">What to expect, stage by stage</div>
+
+  <div class="stages">
+    <div class="stage">
+      <div class="stage-left">
+        <div class="stage-dot">1</div>
+        <div class="stage-line"></div>
+      </div>
+      <div class="stage-body">
+        <div class="stage-label">Stage 1</div>
+        <div class="stage-name">Recruiter chat</div>
+        <div class="stage-desc">Get to know Blinq and the opportunity ahead. We'll learn more about your background, motivations, and what you're looking for next, while giving you a clear picture of our team, culture, and mission.</div>
+      </div>
+    </div>
+    <div class="stage">
+      <div class="stage-left">
+        <div class="stage-dot">2</div>
+        <div class="stage-line"></div>
+      </div>
+      <div class="stage-body">
+        <div class="stage-label">Stage 2</div>
+        <div class="stage-name">Hiring manager interview</div>
+        <div class="stage-desc">A deeper conversation with your future manager to explore your experience, strengths, and approach to work. We'll dive into your accomplishments, how you think, and the impact you've created throughout your career.</div>
+      </div>
+    </div>
+    <div class="stage">
+      <div class="stage-left">
+        <div class="stage-dot">3</div>
+        <div class="stage-line"></div>
+      </div>
+      <div class="stage-body">
+        <div class="stage-label">Stage 3</div>
+        <div class="stage-name">Deep dive</div>
+        <div class="stage-desc">Time to put yourself in the role. You'll work through real challenges our team faces at Blinq, giving us a chance to see how you solve problems, prioritize, and make decisions. Depending on the role, this may be a take-home exercise or a live working session.</div>
+      </div>
+    </div>
+  </div>
+
+  <hr class="divider" />
+
+  <div class="two-col">
+    <div class="list-card">
+      <div class="list-card-title">What we're looking for</div>
+      <ul class="check-list">
+        <li>High-energy communicators who thrive on outreach and bounce back fast</li>
+        <li>Curious, coachable, and genuinely motivated to grow into closing roles</li>
+        <li>Takes initiative and owns their daily output and pipeline</li>
+        <li>Comfortable working independently across time zones</li>
+        <li>Resourceful, organized, and data-driven in how they prospect</li>
+      </ul>
+    </div>
+    <div class="list-card">
+      <div class="list-card-title">How to prepare</div>
+      <ul class="check-list">
+        <li>Understand Blinq's mission, product, and how we solve problems</li>
+        <li>Be ready to talk through your outreach strategy (email, call, LinkedIn)</li>
+        <li>Have examples of how you've handled rejection and stayed motivated</li>
+        <li>Bring metrics: meetings booked, call-to-meeting conversion rates</li>
+        <li>Think about how you prioritize leads and personalize outreach at scale</li>
+      </ul>
+    </div>
+  </div>
+
+  <hr class="divider" />
+
+  <div class="section-label" style="margin-bottom:8px;">Practice Questions</div>
+  <p style="font-size:14px;color:var(--text-muted);margin-bottom:16px;">We're looking for specific examples, not theory.</p>
+
+  <div class="questions-grid">
+    <div class="question-card">Tell me about a cold prospect you turned into a meeting. How did you do it?</div>
+    <div class="question-card">How do you prioritize your day when you're juggling 100+ accounts?</div>
+    <div class="question-card">What tools or tactics have helped you stand out in outbound?</div>
+    <div class="question-card">What's one mistake you've made in outreach and what did you learn from it?</div>
+    <div class="question-card">How do you stay accountable when your manager is in a different time zone?</div>
+  </div>
+
+
+</div>
+
+<!-- ===== PRODUCT TAB ===== -->
+<div id="tab-product" class="tab-content">
+
+  <div class="section-header">
+    <div class="section-label">Product Management</div>
+    <h2 class="section-title">The Product Management interview process</h2>
+    <p class="section-desc">We're looking for product people who can be both strategic and scrappy. People who move fast, learn from real signals, and know how to bring others along with data and clarity.</p>
+  </div>
+
+  <div class="process-title">What to expect, stage by stage</div>
+
+  <div class="stages">
+    <div class="stage">
+      <div class="stage-left">
+        <div class="stage-dot">1</div>
+        <div class="stage-line"></div>
+      </div>
+      <div class="stage-body">
+        <div class="stage-label">Stage 1</div>
+        <div class="stage-name">Recruiter chat</div>
+        <div class="stage-desc">Get to know Blinq and the opportunity ahead. We'll learn more about your background, motivations, and what you're looking for next, while giving you a clear picture of our team, culture, and mission.</div>
+      </div>
+    </div>
+    <div class="stage">
+      <div class="stage-left">
+        <div class="stage-dot">2</div>
+        <div class="stage-line"></div>
+      </div>
+      <div class="stage-body">
+        <div class="stage-label">Stage 2</div>
+        <div class="stage-name">Hiring manager interview</div>
+        <div class="stage-desc">A deeper conversation with your future manager to explore your experience, strengths, and approach to work. We'll dive into your accomplishments, how you think, and the impact you've created throughout your career.</div>
+      </div>
+    </div>
+    <div class="stage">
+      <div class="stage-left">
+        <div class="stage-dot">3</div>
+        <div class="stage-line"></div>
+      </div>
+      <div class="stage-body">
+        <div class="stage-label">Stage 3</div>
+        <div class="stage-name">Deep dive</div>
+        <div class="stage-desc">Time to put yourself in the role. You'll work through real challenges our team faces at Blinq, giving us a chance to see how you solve problems, prioritize, and make decisions. Depending on the role, this may be a take-home exercise or a live working session.</div>
+        <div style="margin-top:14px;display:flex;flex-direction:column;gap:12px;">
+          <div style="background:var(--cream);border:1px solid var(--border);border-radius:10px;padding:16px 18px;">
+            <div style="font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:var(--accent);margin-bottom:4px;">3a — Live problem challenge</div>
+            <div style="font-size:14px;color:var(--text-muted);line-height:1.6;">We'll present a real problem live and work through it together. This is less about a perfect answer and more about how you think, structure ambiguity, and collaborate in real time.</div>
+          </div>
+          <div style="background:var(--cream);border:1px solid var(--border);border-radius:10px;padding:16px 18px;">
+            <div style="font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:var(--accent);margin-bottom:4px;">3b — Take-home &amp; panel presentation</div>
+            <div style="font-size:14px;color:var(--text-muted);line-height:1.6;">After the live challenge, you'll get a short take-home task to work on in your own time. You'll then present your thinking to a panel. We're looking for clarity, structure, and how you communicate complex ideas.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="stage">
+      <div class="stage-left">
+        <div class="stage-dot">4</div>
+        <div class="stage-line"></div>
+      </div>
+      <div class="stage-body">
+        <div class="stage-label">Stage 4</div>
+        <div class="stage-name">Bar Raiser interview</div>
+        <div class="stage-desc">We set a high bar for talent. This interview focuses on leadership, ownership, decision-making, and growth. We'll explore how you've handled challenges, influenced outcomes, and raised the performance of the teams around you.</div>
+      </div>
+    </div>
+  </div>
+
+  <hr class="divider" />
+
+  <div class="two-col">
+    <div class="list-card">
+      <div class="list-card-title">Experience we're looking for</div>
+      <ul class="check-list">
+        <li>End-to-end product ownership, ideally in a B2C &amp; B2B SaaS environment</li>
+        <li>Experience moving products from 0 to 1</li>
+        <li>Aligning with leadership, writing specs, joining customer calls</li>
+        <li>Writing clearly and presenting insights with structure</li>
+        <li>A genuine bias for speed, learning, and ownership</li>
+      </ul>
+    </div>
+    <div class="list-card">
+      <div class="list-card-title">Mindset we value</div>
+      <ul class="check-list">
+        <li>Understands trade-offs between speed and building for scale</li>
+        <li>Comfortable being both strategic and scrappy</li>
+        <li>Defines scope quickly and validates fast</li>
+        <li>Builds trust through clear, data-informed storytelling</li>
+        <li>Balances customer empathy with GTM considerations</li>
+      </ul>
+    </div>
+  </div>
+
+  <hr class="divider" />
+
+  <div class="section-label" style="margin-bottom:8px;">How to prepare</div>
+
+  <div class="prepare-grid">
+    <div class="prepare-card">
+      <div class="prepare-number">1</div>
+      <div class="prepare-title">Know Blinq</div>
+      <div class="prepare-desc">Use the product. Review our target users and the market. Think about how you'd measure product success at our current stage.</div>
+    </div>
+    <div class="prepare-card">
+      <div class="prepare-number">2</div>
+      <div class="prepare-title">Be specific</div>
+      <div class="prepare-desc">We'll dig into past work so come with 1-2 case studies. We're less interested in theory and more interested in real decisions, real teamwork, and real outcomes.</div>
+    </div>
+    <div class="prepare-card">
+      <div class="prepare-number">3</div>
+      <div class="prepare-title">Bring a data lens</div>
+      <div class="prepare-desc">Think through how you've used data to drive decisions. Share experience partnering with data teams or running your own analysis.</div>
+    </div>
+  </div>
+
+
+</div>
+
+<!-- ===== PRODUCT DESIGN TAB ===== -->
+<div id="tab-design" class="tab-content">
+
+  <div class="section-header">
+    <div class="section-label">Product Design</div>
+    <h2 class="section-title">The Product Design interview process</h2>
+    <p class="section-desc">We're looking for designers with strong craft and sharp product thinking. If you care deeply about user experience and can clearly explain the reasoning behind every decision you make, you'll fit right in.</p>
+  </div>
+
+  <div class="process-title">What to expect, stage by stage</div>
+
+  <div class="stages">
+    <div class="stage">
+      <div class="stage-left">
+        <div class="stage-dot">1</div>
+        <div class="stage-line"></div>
+      </div>
+      <div class="stage-body">
+        <div class="stage-label">Stage 1</div>
+        <div class="stage-name">Recruiter chat</div>
+        <div class="stage-desc">Get to know Blinq and the opportunity ahead. We'll learn more about your background, motivations, and what you're looking for next, while giving you a clear picture of our team, culture, and mission.</div>
+      </div>
+    </div>
+    <div class="stage">
+      <div class="stage-left">
+        <div class="stage-dot">2</div>
+        <div class="stage-line"></div>
+      </div>
+      <div class="stage-body">
+        <div class="stage-label">Stage 2</div>
+        <div class="stage-name">Hiring manager interview</div>
+        <div class="stage-desc">A deeper conversation with your future manager to explore your experience, strengths, and approach to work. We'll dive into your accomplishments, how you think, and the impact you've created throughout your career.</div>
+      </div>
+    </div>
+    <div class="stage">
+      <div class="stage-left">
+        <div class="stage-dot">3</div>
+        <div class="stage-line"></div>
+      </div>
+      <div class="stage-body">
+        <div class="stage-label">Stage 3</div>
+        <div class="stage-name">Deep dive</div>
+        <div class="stage-desc">Time to put yourself in the role. You'll work through real challenges our team faces at Blinq, giving us a chance to see how you solve problems, prioritize, and make decisions. Depending on the role, this may be a take-home exercise or a live working session.</div>
+      </div>
+    </div>
+    <div class="stage">
+      <div class="stage-left">
+        <div class="stage-dot">4</div>
+        <div class="stage-line"></div>
+      </div>
+      <div class="stage-body">
+        <div class="stage-label">Stage 4</div>
+        <div class="stage-name">Bar Raiser interview</div>
+        <div class="stage-desc">We set a high bar for talent. This interview focuses on leadership, ownership, decision-making, and growth. We'll explore how you've handled challenges, influenced outcomes, and raised the performance of the teams around you.</div>
+      </div>
+    </div>
+  </div>
+
+  <hr class="divider" />
+
+  <div class="section-label" style="margin-bottom:8px;">How to prepare</div>
+  <h3 style="font-family:'Playfair Display',serif;font-size:22px;font-weight:800;margin-bottom:22px;color:var(--text);">Interview focus areas</h3>
+
+  <div style="display:flex;flex-direction:column;gap:16px;margin-bottom:44px;">
+
+    <div style="background:var(--white);border:1px solid var(--border);border-radius:14px;padding:24px;">
+      <div style="font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:var(--accent);margin-bottom:12px;">Stage 2 — Hiring manager interview</div>
+      <ul class="check-list">
+        <li>Come prepared with 1-2 portfolio projects you can speak to in depth. Overindex on mobile app projects</li>
+        <li>Use Blinq before your interview and come with a genuine point of view on our UI and UX. That kind of preparation shows</li>
+      </ul>
+    </div>
+
+    <div style="background:var(--white);border:1px solid var(--border);border-radius:14px;padding:24px;">
+      <div style="font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:var(--accent);margin-bottom:12px;">Stage 3 — Deep dive &amp; presentation</div>
+      <ul class="check-list">
+        <li>Don't just show the final design. Walk us through your thinking from first principles: what problem are you solving, for who, and why</li>
+        <li>Show your iteration process, including early sketches, decisions you reversed, and what you learned along the way</li>
+        <li>Anticipate questions about your choices and be ready to defend decisions while staying open to feedback</li>
+        <li>Structure your presentation clearly: problem framing, approach, solution, and what you'd explore next given more time</li>
+        <li>We care more about your reasoning than a pixel-perfect output. Clarity of thought beats visual polish</li>
+        <li>If you used AI to assist your workflow, feel free to share how. We embrace that at Blinq</li>
+      </ul>
+    </div>
+
+  </div>
+
+</div>
+
+<!-- ===== MARKETING TAB ===== -->
+<div id="tab-marketing" class="tab-content">
+
+  <div class="section-header">
+    <div class="section-label">Marketing &amp; Brand</div>
+    <h2 class="section-title">The Marketing &amp; Brand interview process</h2>
+    <p class="section-desc">We're looking for marketers who are as comfortable with data as they are with creative ideas. People who can build a brand worth following, drive real growth, and move fast in a high-ownership environment.</p>
+  </div>
+
+  <div class="process-title">What to expect, stage by stage</div>
+
+  <div class="stages">
+    <div class="stage">
+      <div class="stage-left">
+        <div class="stage-dot">1</div>
+        <div class="stage-line"></div>
+      </div>
+      <div class="stage-body">
+        <div class="stage-label">Stage 1</div>
+        <div class="stage-name">Recruiter chat</div>
+        <div class="stage-desc">Get to know Blinq and the opportunity ahead. We'll learn more about your background, motivations, and what you're looking for next, while giving you a clear picture of our team, culture, and mission.</div>
+      </div>
+    </div>
+    <div class="stage">
+      <div class="stage-left">
+        <div class="stage-dot">2</div>
+        <div class="stage-line"></div>
+      </div>
+      <div class="stage-body">
+        <div class="stage-label">Stage 2</div>
+        <div class="stage-name">Hiring manager interview</div>
+        <div class="stage-desc">A deeper conversation with your future manager to explore your experience, strengths, and approach to work. We'll dive into your accomplishments, how you think, and the impact you've created throughout your career.</div>
+      </div>
+    </div>
+    <div class="stage">
+      <div class="stage-left">
+        <div class="stage-dot">3</div>
+        <div class="stage-line"></div>
+      </div>
+      <div class="stage-body">
+        <div class="stage-label">Stage 3</div>
+        <div class="stage-name">Deep dive</div>
+        <div class="stage-desc">Time to put yourself in the role. You'll work through real challenges our team faces at Blinq, giving us a chance to see how you solve problems, prioritize, and make decisions. Depending on the role, this may be a take-home exercise or a live working session.</div>
+      </div>
+    </div>
+    <div class="stage">
+      <div class="stage-left">
+        <div class="stage-dot">4</div>
+        <div class="stage-line"></div>
+      </div>
+      <div class="stage-body">
+        <div class="stage-label">Stage 4</div>
+        <div class="stage-name">Bar Raiser interview</div>
+        <div class="stage-desc">We set a high bar for talent. This interview focuses on leadership, ownership, decision-making, and growth. We'll explore how you've handled challenges, influenced outcomes, and raised the performance of the teams around you.</div>
+      </div>
+    </div>
+  </div>
+
+  <hr class="divider" />
+
+  <div class="section-label" style="margin-bottom:8px;">How to prepare</div>
+  <h3 style="font-family:'Playfair Display',serif;font-size:22px;font-weight:800;margin-bottom:22px;color:var(--text);">Interview focus areas</h3>
+
+  <div style="display:flex;flex-direction:column;gap:16px;margin-bottom:44px;">
+
+    <div style="background:var(--white);border:1px solid var(--border);border-radius:14px;padding:24px;">
+      <div style="font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:var(--accent);margin-bottom:12px;">Stage 2 — Hiring manager interview</div>
+      <ul class="check-list">
+        <li>Come prepared with 1-2 campaigns or projects you've owned end-to-end. Be ready to walk through the brief, your approach, execution, and measurable outcomes</li>
+        <li>Know your numbers: impressions, conversion rates, CAC, pipeline influence, whatever metrics mattered most in your role</li>
+        <li>Be ready to talk about how you've worked with product, sales, and design teams to bring campaigns to life</li>
+        <li>Review Blinq's brand and how we show up across channels before your interview. A genuine point of view on that goes a long way</li>
+        <li>Think about a time you had to balance creativity with commercial constraints. We want to see both sides</li>
+      </ul>
+    </div>
+
+    <div style="background:var(--white);border:1px solid var(--border);border-radius:14px;padding:24px;">
+      <div style="font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:var(--accent);margin-bottom:12px;">Stage 3 — Deep dive &amp; presentation</div>
+      <ul class="check-list">
+        <li>Structure your presentation clearly: the problem or brief, your thinking, your solution, and what success looks like</li>
+        <li>Show your reasoning. We care more about how you arrived at your approach than the final output</li>
+        <li>Be honest about what you'd do differently or explore further given more time or resource</li>
+        <li>Anticipate questions and be ready to defend your decisions while staying open to discussion</li>
+        <li>If you used AI tools to assist your workflow, feel free to share how. We embrace that at Blinq</li>
+      </ul>
+    </div>
+
+  </div>
+
+</div>
+
+<!-- ===== BUSINESS OPERATIONS TAB ===== -->
+<div id="tab-bizops" class="tab-content">
+
+  <div class="section-header">
+    <div class="section-label">Business Operations</div>
+    <h2 class="section-title">The Business Operations interview process</h2>
+    <p class="section-desc">We're looking for operators who thrive in ambiguity and think in systems. If you're energized by complex problems and genuinely excited about making a business run better, you'll fit right in.</p>
+  </div>
+
+  <div class="process-title">What to expect, stage by stage</div>
+
+  <div class="stages">
+    <div class="stage">
+      <div class="stage-left">
+        <div class="stage-dot">1</div>
+        <div class="stage-line"></div>
+      </div>
+      <div class="stage-body">
+        <div class="stage-label">Stage 1</div>
+        <div class="stage-name">Recruiter chat</div>
+        <div class="stage-desc">Get to know Blinq and the opportunity ahead. We'll learn more about your background, motivations, and what you're looking for next, while giving you a clear picture of our team, culture, and mission.</div>
+      </div>
+    </div>
+    <div class="stage">
+      <div class="stage-left">
+        <div class="stage-dot">2</div>
+        <div class="stage-line"></div>
+      </div>
+      <div class="stage-body">
+        <div class="stage-label">Stage 2</div>
+        <div class="stage-name">Hiring manager interview</div>
+        <div class="stage-desc">A deeper conversation with your future manager to explore your experience, strengths, and approach to work. We'll dive into your accomplishments, how you think, and the impact you've created throughout your career.</div>
+      </div>
+    </div>
+    <div class="stage">
+      <div class="stage-left">
+        <div class="stage-dot">3</div>
+        <div class="stage-line"></div>
+      </div>
+      <div class="stage-body">
+        <div class="stage-label">Stage 3</div>
+        <div class="stage-name">Deep dive</div>
+        <div class="stage-desc">Time to put yourself in the role. You'll work through real challenges our team faces at Blinq, giving us a chance to see how you solve problems, prioritize, and make decisions. Depending on the role, this may be a take-home exercise or a live working session.</div>
+      </div>
+    </div>
+    <div class="stage">
+      <div class="stage-left">
+        <div class="stage-dot">4</div>
+        <div class="stage-line"></div>
+      </div>
+      <div class="stage-body">
+        <div class="stage-label">Stage 4</div>
+        <div class="stage-name">Bar Raiser interview</div>
+        <div class="stage-desc">We set a high bar for talent. This interview focuses on leadership, ownership, decision-making, and growth. We'll explore how you've handled challenges, influenced outcomes, and raised the performance of the teams around you.</div>
+      </div>
+    </div>
+  </div>
+
+  <hr class="divider" />
+
+  <div class="section-label" style="margin-bottom:8px;">How to prepare</div>
+  <h3 style="font-family:'Playfair Display',serif;font-size:22px;font-weight:800;margin-bottom:22px;color:var(--text);">Interview focus areas</h3>
+
+  <div style="display:flex;flex-direction:column;gap:16px;margin-bottom:44px;">
+
+    <div style="background:var(--white);border:1px solid var(--border);border-radius:14px;padding:24px;">
+      <div style="font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:var(--accent);margin-bottom:12px;">Stage 2 — Hiring manager interview</div>
+      <ul class="check-list">
+        <li>Come prepared with examples of processes or systems you've built or improved. Be specific about the problem, your approach, and the measurable impact</li>
+        <li>Know your numbers: efficiency gains, cost savings, time saved, or revenue impact tied to work you've driven</li>
+        <li>Think about how you've worked cross-functionally to get things done without direct authority</li>
+        <li>Be ready to talk through a time you had to prioritize ruthlessly: what you chose to do, what you deprioritized, and why</li>
+        <li>Review Blinq's business model and product before your interview. Understanding where we make money and how we operate shows genuine interest</li>
+      </ul>
+    </div>
+
+    <div style="background:var(--white);border:1px solid var(--border);border-radius:14px;padding:24px;">
+      <div style="font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:var(--accent);margin-bottom:12px;">Stage 3 — Deep dive &amp; presentation</div>
+      <ul class="check-list">
+        <li>Structure your presentation clearly: the problem, your approach, your findings, and your recommended path forward</li>
+        <li>Lead with the insight or recommendation, then support it with your analysis. Don't make us wait until the end</li>
+        <li>Show your working. We want to understand your logic, the assumptions you made, and where you had to make judgment calls</li>
+        <li>Be honest about what you'd want to validate further or what data you didn't have. Intellectual honesty is valued here</li>
+        <li>Anticipate questions and be ready to defend your conclusions while staying open to challenge</li>
+        <li>If you used AI tools to assist your analysis or workflow, feel free to share how. We embrace that at Blinq</li>
+      </ul>
+    </div>
+
+  </div>
+
+</div>
+
+<!-- ===== PEOPLE & TALENT TAB ===== -->
+<div id="tab-talent" class="tab-content">
+
+  <div class="section-header">
+    <div class="section-label">People &amp; Talent</div>
+    <h2 class="section-title">The People &amp; Talent interview process</h2>
+    <p class="section-desc">We're looking for people-first operators who are as comfortable building systems as they are sitting across from a candidate or a hiring manager. If you thrive where strategy meets relationships, this is the role for you.</p>
+  </div>
+
+  <div class="process-title">What to expect, stage by stage</div>
+
+  <div class="stages">
+    <div class="stage">
+      <div class="stage-left">
+        <div class="stage-dot">1</div>
+        <div class="stage-line"></div>
+      </div>
+      <div class="stage-body">
+        <div class="stage-label">Stage 1</div>
+        <div class="stage-name">Recruiter chat</div>
+        <div class="stage-desc">Get to know Blinq and the opportunity ahead. We'll learn more about your background, motivations, and what you're looking for next, while giving you a clear picture of our team, culture, and mission.</div>
+      </div>
+    </div>
+    <div class="stage">
+      <div class="stage-left">
+        <div class="stage-dot">2</div>
+        <div class="stage-line"></div>
+      </div>
+      <div class="stage-body">
+        <div class="stage-label">Stage 2</div>
+        <div class="stage-name">Hiring manager interview</div>
+        <div class="stage-desc">A deeper conversation with your future manager to explore your experience, strengths, and approach to work. We'll dive into your accomplishments, how you think, and the impact you've created throughout your career.</div>
+      </div>
+    </div>
+    <div class="stage">
+      <div class="stage-left">
+        <div class="stage-dot">3</div>
+        <div class="stage-line"></div>
+      </div>
+      <div class="stage-body">
+        <div class="stage-label">Stage 3</div>
+        <div class="stage-name">Deep dive</div>
+        <div class="stage-desc">Time to put yourself in the role. You'll work through real challenges our team faces at Blinq, giving us a chance to see how you solve problems, prioritize, and make decisions. Depending on the role, this may be a take-home exercise or a live working session.</div>
+      </div>
+    </div>
+    <div class="stage">
+      <div class="stage-left">
+        <div class="stage-dot">4</div>
+        <div class="stage-line"></div>
+      </div>
+      <div class="stage-body">
+        <div class="stage-label">Stage 4</div>
+        <div class="stage-name">Bar Raiser interview</div>
+        <div class="stage-desc">We set a high bar for talent. This interview focuses on leadership, ownership, decision-making, and growth. We'll explore how you've handled challenges, influenced outcomes, and raised the performance of the teams around you.</div>
+      </div>
+    </div>
+  </div>
+
+  <hr class="divider" />
+
+  <div class="section-label" style="margin-bottom:8px;">How to prepare</div>
+  <h3 style="font-family:'Playfair Display',serif;font-size:22px;font-weight:800;margin-bottom:22px;color:var(--text);">Interview focus areas</h3>
+
+  <div style="display:flex;flex-direction:column;gap:16px;margin-bottom:44px;">
+
+    <div style="background:var(--white);border:1px solid var(--border);border-radius:14px;padding:24px;">
+      <div style="font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:var(--accent);margin-bottom:12px;">Stage 2 — Hiring manager interview</div>
+      <ul class="check-list">
+        <li>Come prepared with examples of hiring pipelines or people processes you've built or improved. Be specific about the problem, your approach, and the impact</li>
+        <li>Think about how you've partnered with hiring managers or business leaders. We want to understand how you earn trust and influence without authority</li>
+        <li>Be ready to talk through a hard talent or people situation you've navigated: what you did, how you communicated, and what you'd do differently</li>
+        <li>Know how you've balanced speed with quality in hiring and where you've had to make trade-offs</li>
+        <li>Review Blinq's careers page and product before your interview. A genuine point of view on how we present ourselves to candidates goes a long way</li>
+      </ul>
+    </div>
+
+    <div style="background:var(--white);border:1px solid var(--border);border-radius:14px;padding:24px;">
+      <div style="font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:var(--accent);margin-bottom:12px;">Stage 3 — Deep dive &amp; presentation</div>
+      <ul class="check-list">
+        <li>Structure your presentation clearly: the challenge, your thinking, your proposed approach, and how you'd measure whether it's working</li>
+        <li>Think about your stakeholders: who's affected, what they care about, and how you'd bring them along</li>
+        <li>Lead with the recommendation, then support it with your reasoning. Don't make us wait until the end</li>
+        <li>Be honest about assumptions you've made and what you'd want to validate with more time or data</li>
+        <li>Anticipate pushback and be ready to discuss trade-offs openly. Intellectual honesty is valued here</li>
+        <li>If you used AI tools to assist your workflow, feel free to share how. We embrace that at Blinq</li>
+      </ul>
+    </div>
+
+  </div>
+
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <p>&copy; 2025 Blinq &ndash; <a href="https://blinq.me" target="_blank">blinq.me</a> &ndash; Built for candidates, by the Talent team</p>
+</footer>
+
+<script>
+  function switchTab(id, el) {
+    document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+    document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+    document.getElementById('tab-' + id).classList.add('active');
+    el.classList.add('active');
+    window.scrollTo({ top: document.querySelector('.tabs-wrapper').offsetTop - 64, behavior: 'smooth' });
+  }
+</script>
+
+</body>
+</html>
